@@ -1,6 +1,7 @@
 package fr.epita.epiquiz;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,6 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import fr.epita.epiquiz.model.Question;
 import fr.epita.epiquiz.model.Quiz;
@@ -44,6 +48,7 @@ public class QuizServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		final Logger LOGGER = LogManager.getLogger(QuizServlet.class);
 		HttpServices hs = new HttpServices();
 		Quiz quiz= (Quiz)request.getSession().getAttribute("quiz");	
 		Long marks= (Long)request.getSession().getAttribute("marks");
@@ -74,12 +79,12 @@ public class QuizServlet extends HttpServlet {
 				{
 					if(choice.equals(q.getAnswer()))
 					{
-						System.out.println("Id-->"+q.getId());
+						//System.out.println("Id-->"+q.getId());
 						score=score+tscore;
-						System.out.println("Present Score : "+score);
+						//System.out.println("Present Score : "+score);
 					}
 					else {
-						System.out.println("wrong ans");
+						//System.out.println("wrong ans");
 					}
 				}
 			}
@@ -89,10 +94,27 @@ public class QuizServlet extends HttpServlet {
 		}
 			
 	}
-		System.out.println("Total : "+marks);
-		System.out.println("tScore is : "+tscore);
-		System.out.println("Score is : "+score);
+		LOGGER.info("Total : "+marks);
+		LOGGER.info("tScore is : "+tscore);
+		LOGGER.info("Score is : "+score);
 		Student stud = hs.getStudent(request.getSession().getAttribute("id").toString());
+		Student update = new Student();
+		update.setId(stud.getId());
+		update.setName(stud.getName());
+		update.setNoofQuiz(""+Integer.valueOf(stud.getNoofQuiz())+1);
+		update.setScore(""+(Double.valueOf(stud.getScore())+score));
+		update.setQuizids(stud.getQuizids()+","+quiz.getId());
+		if(hs.updateStudent(update, update.getId().toString()))
+		{
+			List<Student> quizList = new ArrayList<Student>();
+			//System.out.println(request.getSession().getAttribute("name").toString());
+			Student stud1 = hs.getStudent(request.getSession().getAttribute("id").toString());
+			
+			quizList.add(stud1);
+			System.out.println(quizList.size());
+			request.getSession().setAttribute("studList", quizList);
+			response.sendRedirect("results.jsp");
+		}
 	if(stud.getId()==null)
 	{
 		Student student = new Student();
@@ -102,6 +124,17 @@ public class QuizServlet extends HttpServlet {
 		student.setQuizids(""+quiz.getId());
 		student.setScore(""+score);
 		hs.addStudent(student);
+		List<Student> quizList = new ArrayList<Student>();
+		//System.out.println(request.getSession().getAttribute("name").toString());
+		Student stud1 = hs.getStudent(request.getSession().getAttribute("id").toString());
+		
+		quizList.add(stud1);
+		//System.out.println(quizList.size());
+		
+		
+		request.getSession().setAttribute("studList", quizList);
+		response.sendRedirect("results.jsp");
+		
 	}
 	
 	

@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-
+/*
+ * this class is question controller for the rest api services this handles the CRUD operations of questions.
+ */
 @RestController
 @RequestMapping("/api")
 public class QuestionController {
@@ -21,12 +23,22 @@ public class QuestionController {
 	@Autowired
     QuestionRepo quesRepo;
 	
-	
+	/*
+	 * this method allows to get all question
+	 * @params - no params
+	 * return List of all questions
+	 */
 	 @GetMapping("/Ques")
 	    public List<Question> getAllQues() {
 	        return quesRepo.findAll();
 	    }
-
+	 	
+	 
+	 /*
+	  * 
+	  * this method returns a specific question by providing the ID
+	  * @params - QuestionID
+	  */
 	    @GetMapping("/Ques/{id}")
 	    public ResponseEntity<Question> getQuesById(@PathVariable(value = "id") Long quesId) {
 	        Question ques = quesRepo.findOne(quesId);
@@ -56,11 +68,23 @@ public class QuestionController {
 	        return ResponseEntity.ok().body(Users);
 	    }*/
 	    
+	    
+		 /*
+		  * 
+		  * this method saves/creates a new question.
+		  * @params - Question object
+		  */
 	    @PostMapping("/Ques")
 	    public Question createQues(@Valid @RequestBody Question ques) {
 	        return quesRepo.save(ques);
 	    }
 
+	    
+	    /*
+		  * 
+		  * this method updates a existing question.
+		  * @params - QuestionID
+		  */
 	    @PutMapping("/Ques/{id}")
 	    public ResponseEntity<Question> updateQues(@PathVariable(value = "id") Long UsersId,
 	                                           @Valid @RequestBody Question quesDetails) {
@@ -81,6 +105,11 @@ public class QuestionController {
 	        return ResponseEntity.ok(updatedUsers);
 	    }
 
+	    /*
+		  * 
+		  * this method deletes a existing question.
+		  * @params - QuestionID
+		  */
 	    @DeleteMapping("/Ques/{id}")
 	    public ResponseEntity<Question> deleteQues(@PathVariable(value = "id") Long quesId) {
 	        Question Users = quesRepo.findOne(quesId);

@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+
+/*
+ * 
+ * the class is the user controller for the rest api services
+ */
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -35,7 +40,7 @@ public class UserController {
 	    
 	    @GetMapping("/Users/{name}")
 	    public ResponseEntity<List<Users>> getUsersByName(@PathVariable(value = "name") String UsersId) {
-	        System.out.println("entered------------------------");
+	        //System.out.println("entered------------------------");
 	    	List<Users> Users = loginRepo.findByName(UsersId);
 	        if(Users == null) {
 	            return ResponseEntity.notFound().build();
@@ -45,7 +50,7 @@ public class UserController {
 
 	    @GetMapping("/Users/{name}/{password}")
 	    public ResponseEntity<List<Users>> authenticateLogin(@PathVariable(value = "name") String UsersId,@PathVariable(value = "password") String password) {
-	        System.out.println("entered------------------------");
+	      //  System.out.println("entered------------------------");
 	    	List<Users> Users = loginRepo.findLogin(UsersId,password);
 	        if(Users == null) {
 	            return ResponseEntity.notFound().build();

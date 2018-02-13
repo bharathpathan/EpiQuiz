@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+
+/*
+ * 
+ * this class is the student controller for the rest api services
+ */
 @RestController
 @RequestMapping("/api")
 public class StudentController {

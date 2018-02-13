@@ -47,9 +47,9 @@ public class StudentHomeServlet extends HttpServlet {
 		doGet(request, response);
 		HttpServices hs = new HttpServices();
 		if (request.getParameter("participate") != null) {
-			System.out.println("inside participate");
+			//System.out.println("inside participate");
 			List<Quiz> quizList =(List<Quiz>) hs.getQuiz();
-			System.out.println(quizList.size());
+			//System.out.println(quizList.size());
 			
 			
 			request.getSession().setAttribute("quizList", quizList);
@@ -58,13 +58,13 @@ public class StudentHomeServlet extends HttpServlet {
 					
 				}
 		if (request.getParameter("view") != null) {
-			System.out.println("inside participate");
+			//System.out.println("inside participate");
 			List<Student> quizList = new ArrayList<Student>();
-					System.out.println(request.getSession().getAttribute("id").toString());
+					//System.out.println(request.getSession().getAttribute("id").toString());
 			Student stud = hs.getStudent(request.getSession().getAttribute("id").toString());
 			
 			quizList.add(stud);
-			System.out.println(quizList.size());
+			//System.out.println(quizList.size());
 			
 			
 			request.getSession().setAttribute("studList", quizList);
@@ -73,13 +73,13 @@ public class StudentHomeServlet extends HttpServlet {
 					
 				}
 		if (request.getParameter("oView") != null) {
-			System.out.println("inside participate");
+			//System.out.println("inside participate");
 			 //= new ArrayList<Student>();
-					System.out.println(request.getSession().getAttribute("id").toString());
+				//	System.out.println(request.getSession().getAttribute("id").toString());
 					List<Student> quizList = hs.getAllStudents();
 			
 			//quizList.add(stud);
-			System.out.println(quizList.size());
+			//System.out.println(quizList.size());
 			
 			
 			request.getSession().setAttribute("studList", quizList);

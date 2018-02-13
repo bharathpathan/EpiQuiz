@@ -9,6 +9,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+/*
+ * 
+ * Repository for Users
+ * a repository doest need methods as the JPA Repository class provides it internally
+ * 
+ */
 @Repository
 public interface LoginRepo extends JpaRepository<Users, Long>  {
 

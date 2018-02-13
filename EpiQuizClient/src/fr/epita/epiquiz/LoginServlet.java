@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 
 import fr.epita.epiquiz.services.HttpServices;
@@ -45,12 +47,13 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		final Logger LOGGER = LogManager.getLogger(LoginServlet.class);
 		final HttpSession session = request.getSession();
 		final String login = request.getParameter("usr");
 		final String password = request.getParameter("pwd");
 		HttpServices hs = new HttpServices();
 		JSONObject explrObject = hs.getLogin(login,password);
-		System.out.println(hs.getLogin(login,password));
+		LOGGER.info("Logging in details",hs.getLogin(login,password));
 		
 		
 			//System.out.println(explrObject.getInt("type"));
@@ -63,12 +66,13 @@ public class LoginServlet extends HttpServlet {
 		{
 			session.setAttribute("id", explrObject.getLong("id"));
 			session.setAttribute("name", explrObject.getString("name"));
+			LOGGER.info(session.getAttribute("name")+" has been logged in.");
 			session.setAttribute("authenticated", true);
 			request.getRequestDispatcher("studenthome.jsp").forward(request, response);
 		}
 		else
 		{
-			
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 		
 		

@@ -10,7 +10,10 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
+/*
+ * 
+ * Quiz datamodel class
+ */
 @Entity
 @Table(name = "quiz")
 @EntityListeners(AuditingEntityListener.class)

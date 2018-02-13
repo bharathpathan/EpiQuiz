@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>EpiQuiz</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -57,8 +57,18 @@
             <h5 class="text-danger">Login as an student to<mark>participate in a quiz</mark>. </h5></th>
       
       </tr>
+      
         
     </thead>
+    <tbody>
+    <tr>
+    <td>
+    <a href="signup.jsp"><mark>Create account</mark> as a Admin or as a  Student to evaluate the software</a>
+      
+    </td>
+    </tr>
+    </tbody>
+    </table>
     
  
     </main>

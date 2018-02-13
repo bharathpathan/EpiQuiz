@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import fr.epita.epiquiz.model.Question;
 import fr.epita.epiquiz.model.Quiz;
 import fr.epita.epiquiz.services.HttpServices;
@@ -47,6 +50,7 @@ public class SelectQuiz extends HttpServlet {
 		HttpServices hs = new HttpServices();
 		String[] checked = request.getParameterValues("modify");
 		List<Question> qid = new ArrayList<Question>();
+		final Logger LOGGER = LogManager.getLogger(SelectQuiz.class);
 		
 		
 		 Quiz quiz = new Quiz();
@@ -59,7 +63,7 @@ public class SelectQuiz extends HttpServlet {
 					    
 					
 		String ques = quiz.getQuesIds();
-		System.out.println("--->"+quiz.getQuesIds());
+		//System.out.println("--->"+quiz.getQuesIds());
 		Long marks=quiz.getqMarks();
 		int noOfQues=0;
 		List<String> quesids = Arrays.asList(ques.split(","));
@@ -67,7 +71,7 @@ public class SelectQuiz extends HttpServlet {
 		{
 			if(!s.equals("")) {
 				noOfQues= noOfQues+1;
-			System.out.println("s--->"+s);
+			//System.out.println("s--->"+s);
 			qid.add(hs.getQuesById(s));
 			System.out.println(qid);}
 		}

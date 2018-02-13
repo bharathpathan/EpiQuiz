@@ -18,7 +18,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <title>Starter Template for Bootstrap</title>
+    <title>EpiQuiz</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -51,11 +51,11 @@
         <div class="starter-template">
             <div class="border border-dark">
             <h1>EPIQuiz</h1>
-            <p class="lead">this is a online quiz program where admin can create the quiz and users can participate in a quiz.</p>
+          
         </div></div>
         <form action="LogoutServlet" Method="post">
         <button type="submit" class="btn btn-success"   >Logout</button>
-        <a href="studenthome.jsp"></a><button type="button" class="btn btn-success"   >Home</button>
+        
 </form>
 
 <form name="StudentHomeServlet" action="StudentHomeServlet" method="post">
@@ -113,4 +113,9 @@
 
 
 </body>
+
+<footer class="border border-dark">
+<p class="lead">this is a online quiz program where admin can create the quiz and users can participate in a quiz.</p>
+
+</footer>
 </html>

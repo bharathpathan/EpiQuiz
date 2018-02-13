@@ -29,7 +29,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <title>Starter Template for Bootstrap</title>
+    <title>EpiQuiz</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -68,11 +68,11 @@
         <div class="starter-template">
             <div class="border border-dark">
             <h1>EPIQuiz</h1>
-            <p class="lead">this is a online quiz program where admin can create the quiz and users can participate in a quiz.</p>
+            
         </div></div>
         <form action="LogoutServlet" Method="post">
         <button type="submit" class="btn btn-success"   >Logout</button>
-        <a href="studenthome.jsp"></a><button type="button" class="btn btn-success"   >Home</button>
+        <a href="studenthome.jsp"><button type="button" class="btn btn-success"   >Home</button></a>
 </form>
       
     
@@ -81,7 +81,7 @@
             <div class="border border-dark">
                 
                 
-                    <table >
+                <!--     <table >
                     <tr>
                         <td style="padding-left: 1.8em">
                             <input class="form-control" name="quizID" type="text" Value="1023" readonly style="width:150px;  ">
@@ -98,7 +98,7 @@
                         
                         </tr>
                     
-                    </table>
+                    </table> -->
                 
                 
                 
@@ -108,11 +108,11 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th>Selection</th>
-							<th>ID</th>
-							<th>Display Name</th>
-							<th>Email</th>
-							<th>BirthDate</th>
+							<th>StudentId</th>
+							<th>Student Name</th>
+							<th>Total Score</th>
+							<th>No of Quiz<br> Participated</th>
+							<th>Quiz ID's</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -138,7 +138,7 @@
 							<td><%=id.getQuizids() %></td>
 					
 							
-							<td><button type="submit" class="btn btn-primary"  name="modify" value="<%=id.getId()%>">Modify</button></td>
+							<%-- <td><button type="submit" class="btn btn-primary"  name="modify" value="<%=id.getId()%>">Modify</button></td> --%>
 						</tr>
                         <%} 
                         }%>
@@ -163,4 +163,8 @@
 
 
 </body>
+<footer class="border border-dark">
+<p class="lead">this is a online quiz program where admin can create the quiz and users can participate in a quiz.</p>
+
+</footer>
 </html>

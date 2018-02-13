@@ -29,9 +29,27 @@
     <servlet-name>QuizServlet</servlet-name>
     <servlet-class>fr.epita.epiquiz.QuizServlet</servlet-class>
   </servlet>
+   <servlet>
+    <servlet-name>UpdateQuestionServlet</servlet-name>
+    <servlet-class>fr.epita.epiquiz.UpdateQuestionServlet</servlet-class>
+  </servlet>
+ 
+  <servlet-mapping>
+    <servlet-name>UpdateQuestionServlet</servlet-name>
+    <url-pattern>/UpdateQuestionServlet</url-pattern>
+  </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>QuizServlet</servlet-name>
     <url-pattern>/QuizServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Signupservlet</servlet-name>
+    <servlet-class>fr.epita.epiquiz.Signupservlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Signupservlet</servlet-name>
+    <url-pattern>/Signupservlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>LogoutServlet</servlet-name>

@@ -32,7 +32,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <title>Starter Template for Bootstrap</title>
+    <title>EpiQuiz</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -71,11 +71,11 @@
         <div class="starter-template">
             <div class="border border-dark">
             <h1>EPIQuiz</h1>
-            <p class="lead">this is a online quiz program where admin can create the quiz and users can participate in a quiz.</p>
+            
         </div></div>
         <form action="LogoutServlet" Method="post">
         <button type="submit" class="btn btn-success"   >Logout</button>
-        <a href="studenthome.jsp"></a><button type="button" class="btn btn-success"   >Home</button>
+        <a href="studenthome.jsp"><button type="button" class="btn btn-success"   >Home</button></a>
 </form>
       
     
@@ -126,7 +126,7 @@
 							
 							<td><textarea class="form-control" rows="3" style="padding-bottom: 10px" name="question" placeholder="input your question here...."><%=id.getQuestion() %></textarea>
                                     <div class="checkbox" style="padding-top: 10px; padding-left: 50px">
-                                    <label><input type="checkbox" name="option" value=<%= id.getId().toString()+","+id.getOption1() %> ><label for="boxid">not checked</label><input type="text" value=<%=id.getOption1() %> name="option1t" placeholder="please give option 1"></input></label>
+                                    <label><input type="checkbox" name="option" value=<%= id.getId().toString()+","+id.getOption1() %> ><input type="text" value=<%=id.getOption1() %> name="option1t" placeholder="please give option 1"></input></label>
                                     <label class="checkbox-inline" style="padding-left: 300px"><input type="checkbox" name="option" value=<%= id.getId().toString()+","+id.getOption2() %>><input type="text" value=<%=id.getOption2() %> name="option2t" placeholder="please give option 2"></input></label>
                                     </div>
 
@@ -148,8 +148,8 @@
 			<div class="form-group">
 				<div class=" col-sm-offset-2 col-sm-10 text-right">
 					
-					<button type="submit" class="btn btn-primary" value="Modify" name="modify">Modify</button>
-					<button type="submit" class="btn btn-primary" value="Delete" name="delete">Make Quiz</button>
+					
+					<button type="submit" class="btn btn-primary" value="Submit Quiz" name="quiz">Submit Quiz</button>
 					
 				</div>
 	</div>
@@ -179,4 +179,8 @@
     </script>
 
 </body>
+<footer class="border border-dark">
+<p class="lead">this is a online quiz program where admin can create the quiz and users can participate in a quiz.</p>
+
+</footer>
 </html>

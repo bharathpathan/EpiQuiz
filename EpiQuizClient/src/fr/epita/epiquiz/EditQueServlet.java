@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import fr.epita.epiquiz.model.Question;
 import fr.epita.epiquiz.services.HttpServices;
 
@@ -43,9 +46,10 @@ public class EditQueServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
+		final Logger LOGGER = LogManager.getLogger(EditQueServlet.class);
 		final HttpSession session = request.getSession();
 		HttpServices hs = new HttpServices();
+		
 		
 		if (request.getParameter("add") != null) {  
 		String[] checked = request.getParameterValues("option");
@@ -55,16 +59,17 @@ public class EditQueServlet extends HttpServlet {
 		String answer="";
 		if(checked.length>1) {
 		for (int i = 0; i < checked.length; i++) {
-		    System.out.println(checked[i]); 
+		    //System.out.println(checked[i]); 
 		    answer=answer+","+checked[i];
-		    System.out.println(checked.length);
+		    //System.out.println(checked.length);
 		}}
 		else
 		{
 			for (int i = 0; i < checked.length; i++) {
-			  System.out.println(checked[i]); 
+			 // System.out.println(checked[i]); 
 			    answer=checked[i];
-			    System.out.println(checked.length);}
+			    //System.out.println(checked.length);
+			    }
 		}
 		
 		//bug: when ore than one option is selected it doesnt work the answer part.
@@ -81,7 +86,7 @@ public class EditQueServlet extends HttpServlet {
 		
 		if(status)
 		{
-			System.out.println("successfully inserted");
+			LOGGER.info("successfully inserted new question");
 			List<Question> quesList = new ArrayList<Question>();
 			HashMap<Long,Question>  quesMap = (HashMap<Long,Question>) hs.getQues();
 			for (HashMap.Entry<Long, Question> ques : quesMap.entrySet())
@@ -90,11 +95,14 @@ public class EditQueServlet extends HttpServlet {
 			}
 			request.getSession().setAttribute("quesList", quesList);
 			request.getSession().setAttribute("quesMap", quesMap);
-			response.sendRedirect("makeQuiz.jsp");
+			response.sendRedirect("adminhome.jsp");
 			
 		}
-		else
-			System.out.println("Failed");
+		else {
+			LOGGER.info("Failed");
+			response.sendRedirect("adminhome.jsp");
+			
+		}
 		}
 		if (request.getParameter("makequiz") != null) {  
 			
